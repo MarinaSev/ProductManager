@@ -22,6 +22,13 @@ public class Smartphone extends Product {
         this.production = production;
     }
 
+    public boolean matches(String text) {
+        if (super.matches(text)) {
+            return true;
+        }
+        return production.contains(text);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -12,7 +12,6 @@ public class Book extends Product {
     public Book(int id, String name, int price, String author) {
         super(id, name, price);
         this.author = author;
-
     }
 
     public String getAuthor() {
@@ -21,6 +20,11 @@ public class Book extends Product {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @Override
+    public boolean matches(String text) {
+        return super.matches(text) || author.contains(text);
     }
 
     @Override
