@@ -44,4 +44,12 @@ class ProductManagerTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSearchByFictionName() {
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Iphone 12");
+
+        assertArrayEquals(expected, actual);
+    }
+
 }

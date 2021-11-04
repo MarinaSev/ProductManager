@@ -15,7 +15,7 @@ public class ProductManager {
     public void add(Product product) {
         repo.save(product);
     }
-
+    
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         Product[] products = repo.findAll();
@@ -34,6 +34,7 @@ public class ProductManager {
         if (product.getName().contains(search)) {
             return true;
         }
+
         if (product instanceof Book) { // если в параметре product лежит объект класса Book
             Book book = (Book) product; // положем его в переменную типа Book чтобы пользоваться методами класса Book
             if (book.getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
@@ -48,7 +49,5 @@ public class ProductManager {
         }
         return false;
     }
-
-
 
 }
