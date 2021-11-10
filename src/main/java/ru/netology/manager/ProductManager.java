@@ -18,13 +18,17 @@ public class ProductManager {
     
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
+
         Product[] products = repo.findAll();
+
         for (Product product : products) {
             if (matches(product, text)) {
-                Product[] tmp = new Product[result.length + 1];
+                int lenght = result.length+1;
+                Product[] tmp = new Product[lenght];
                 System.arraycopy(result,0, tmp,0, result.length);
                 tmp[tmp.length - 1] = product;
                 result = tmp;
+                lenght++;
             }
         }
         return result;
@@ -36,7 +40,7 @@ public class ProductManager {
         }
 
         if (product instanceof Book) { // если в параметре product лежит объект класса Book
-            Book book = (Book) product; // положем его в переменную типа Book чтобы пользоваться методами класса Book
+            Book book = (Book) product; // положим его в переменную типа Book чтобы пользоваться методами класса Book
             if (book.getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
                 return true;
             }
